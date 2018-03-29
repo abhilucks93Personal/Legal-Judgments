@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_dashboard"
+            android:icon="@drawable/ic_dashboard_black_24dp"
+            android:title="Dashboard" />
+
+        <item
+            android:id="@+id/nav_users"
+            android:icon="@drawable/ic_face_black_24dp"
+            android:title="Users" />
+        <item
+            android:id="@+id/nav_articles"
+            android:icon="@drawable/ic_content_paste_black_24dp"
+            android:title="Judgments" />
+        <item
+            android:id="@+id/nav_membership_packages"
+            android:icon="@drawable/ic_card_membership_black_24dp"
+            android:title="Membership" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:title="Logout" />
+    </group>
+
+
+
+</menu>

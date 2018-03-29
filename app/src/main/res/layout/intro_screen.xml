@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:paddingBottom="30dp"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp">
+
+    <LinearLayout
+        android:id="@+id/intro_ll_registeration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+        <com.legaljudgements.Utils.AvenirNextLTProRegular
+            android:id="@+id/intro_tv_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_bg"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="15dp"
+            android:text="Register"
+            android:textColor="@color/colorWhite"
+            android:textSize="17sp" />
+
+        <com.legaljudgements.Utils.AvenirNextLTProRegular
+            android:id="@+id/intro_tv_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/layout_bg2"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:padding="15dp"
+            android:text="Login"
+            android:textColor="@color/colorPrimary"
+            android:textSize="17sp" />
+    </LinearLayout>
+</LinearLayout>

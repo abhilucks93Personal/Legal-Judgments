@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">Legal Judgments</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="openDrawer">open_drawer</string>
+    <string name="closeDrawer">close_drawer</string>
+
+    <!-- Navigation Drawer menu labels -->
+    <string-array name="nav_drawer_labels_admin">
+        <item>@string/nav_item_home</item>
+        <item>@string/nav_item_articles</item>
+        <item>@string/nav_item_manage_membership</item>
+        <item>@string/nav_item_settings</item>
+    </string-array>
+
+    <string name="nav_item_home">Dashboard</string>
+    <string name="nav_item_articles">Articles</string>
+    <string name="nav_item_manage_membership">Membership Packages</string>
+    <string name="nav_item_settings">Logout</string>
+
+    <!-- Toolbar titles when navigation menu item is selected -->
+    <string-array name="nav_item_activity_titles_admin">
+        <item>Dashboard</item>
+        <item>Users</item>
+        <item>Legal Judgments</item>
+        <item>Membership</item>
+        <item>Logout</item>
+    </string-array>
+
+    <!-- Toolbar titles when navigation menu item is selected -->
+    <string-array name="nav_item_activity_titles_lawyer">
+        <item>Home</item>
+        <item>Profile</item>
+        <item>Legal Judgments</item>
+        <item>Flagged</item>
+        <item>Memberships</item>
+        <item>Change Password</item>
+        <item>Terms &amp; Conditions</item>
+        <item>Contact Us</item>
+    </string-array>
+
+    <string name="payment_request_msg">Your Account is Deactivated. Please make the payment to above mentioned account details, (or if already paid) contact admin to activate your account.</string>
+    <string name="membership_renew_msg">Your request has been sent. Please make the payment to above mentioned account details, (or if already paid) contact admin to activate your membership.</string>
+    <string name="membership_expiration_msg">It seems that your membership has been expired. Please contact the admin.</string>
+    <string name="action_settings">Settings</string>
+    <string name="account_details">
+        A/C Name - Legal Judgments\nA/C No. - 82481010002193\nIFSC Code - SYNB0008248\nSyndicate Bank, Jind (Hr)\n\nor\n\npaytm  on 9034387200</string>
+
+    <string name="terms_conditions">The content of this application is for general information and use only.\n\nYour access to this app is strictly depends on plan you choose. We reserve the right to delete or disable your account on expiration of duration of plan or in case non deposition of subscription fee.\n\nWe need your basic information for making this app accessible to you. If you provide any incorrect information, or we have reasonable grounds to suspect that such information is incorrect, we shall have the right to suspend or terminate your account on application and refuse to provide you access of app.\n\nWe take all necessary care to maintain safety of your personal information when you access our app.\n\nReproduction of contents of this app will be a criminal offence as per Copyright laws of country.\n\nWe take all reasonable care in ensuring that all information we provide in application is accurate but we are not responsible for any loss suffered by you as a consequence of any action you take or omit to take on basis of any of the information we provide .\n\nActive internet connection will be required for using this application.\n\nAlthough we will do our best to provide constant, uninterrupted access to the app, we do not guarantee this nor do we accept any responsibility or liability for any interruption or delay.\n\nYour use of this app and any dispute arising out of such use of the app is subject to the laws of India and to the exclusive jurisdiction of the courts in Jind.</string>
+    <string name="contactNumber1">101</string>
+    <string name="contactNumber2">102</string>
+</resources>

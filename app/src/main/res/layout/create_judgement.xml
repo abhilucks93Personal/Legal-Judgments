@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundGrey"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/create_judgements_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/colorWhite"
+        android:paddingBottom="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="20dp">
+
+        <TextView
+            android:id="@+id/create_judgements_tv_add_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/layout_bg"
+            android:gravity="center"
+            android:padding="@dimen/activity_padding_textview_button"
+            android:text="Add Judgment"
+            android:textColor="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/create_judgements_tv_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/layout_bg"
+            android:gravity="center"
+            android:padding="@dimen/activity_padding_textview_button"
+            android:text="Submit"
+            android:textColor="#dedede" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/create_judgements_footer"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="5dp"
+                android:text="Title"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/create_judgements_et_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/layout_bg4"
+                android:padding="@dimen/activity_padding_edittext"
+                android:singleLine="true"
+                android:textColor="@color/colorBlack"
+                android:textSize="13sp"
+                android:visibility="gone" />
+
+
+            <TextView
+                android:id="@+id/textView_case_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="5dp"
+                android:text="Citation" />
+
+            <EditText
+                android:id="@+id/create_judgements_et_case_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/layout_bg4"
+                android:padding="@dimen/activity_padding_edittext"
+                android:singleLine="true"
+                android:textColor="@color/colorBlack"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="12dp"
+                        android:paddingTop="5dp"
+                        android:text="Case Type" />
+
+                    <EditText
+                        android:id="@+id/create_judgements_et_case_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/layout_bg4"
+                        android:padding="@dimen/activity_padding_edittext"
+                        android:singleLine="true"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="12dp"
+                        android:paddingTop="5dp"
+                        android:text="Judgment Type" />
+
+                    <EditText
+                        android:id="@+id/create_judgements_et_judgement_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/layout_bg4"
+
+                        android:padding="@dimen/activity_padding_edittext"
+                        android:singleLine="true"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="12dp"
+                        android:paddingTop="5dp"
+                        android:text="Court" />
+
+                    <EditText
+                        android:id="@+id/create_judgements_et_court"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/layout_bg4"
+                        android:padding="@dimen/activity_padding_edittext"
+                        android:singleLine="true"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="12dp"
+                        android:paddingTop="5dp"
+                        android:text="Date" />
+
+                    <TextView
+                        android:id="@+id/create_judgements_et_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/layout_bg4"
+                        android:drawableRight="@drawable/calender_blue"
+                        android:hint="Select Date"
+                        android:padding="@dimen/activity_padding_edittext"
+                        android:singleLine="true"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="13sp" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView_short_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="5dp"
+                android:text="Head Note" />
+
+            <EditText
+                android:id="@+id/create_judgements_et_short_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/layout_bg4"
+                android:gravity="top"
+                android:lines="12"
+                android:padding="@dimen/activity_padding_edittext"
+                android:textColor="@color/colorBlack"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

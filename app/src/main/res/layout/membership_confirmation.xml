@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:id="@+id/confirmation_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_account_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textIsSelectable="true"
+            android:text=""
+            android:textColor="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/tv_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:visibility="gone"
+            android:padding="10dp"
+            android:text="@string/payment_request_msg"
+            android:textColor="@color/colorGrey25"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/membership_confirmation_tv_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@color/colorTheme"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Ok ! Got it."
+            android:textColor="@color/colorWhite" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/confirmation_ll"
+        android:gravity="bottom"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="Contact Admin : "
+            android:textColor="@color/colorGrey25"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/contactNum1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/contactNumber1"
+                android:textColor="@color/colorRed"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text=","
+                 android:padding="6dp"
+                 android:textColor="@color/colorGrey25"
+                 android:textSize="16sp" />
+ -->
+            <TextView
+                android:id="@+id/contactNum2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/contactNumber2"
+                android:textColor="@color/colorRed"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/judgements_list_item_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:text="title"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/colorGrey20"
+            android:textSize="16sp"
+            android:layout_toLeftOf="@+id/judgement_list_item_tv_date"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/judgement_list_item_tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:padding="5dp"
+            android:text=""
+            android:textSize="11sp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/colorGrey15"
+             />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/judgements_list_item_tv_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_marginLeft="5dp"
+        android:text="type"
+        android:textColor="@color/colorGrey15" />
+
+</LinearLayout>

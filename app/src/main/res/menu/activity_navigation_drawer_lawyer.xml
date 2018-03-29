@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_dashboard_black_24dp"
+            android:title="Home" />
+
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_face_black_24dp"
+            android:title="Profile" />
+
+        <item
+            android:id="@+id/nav_judgements"
+            android:icon="@drawable/ic_content_paste_black_24dp"
+            android:title="Judgments" />
+
+        <item
+            android:id="@+id/nav_flagged_judgements"
+            android:icon="@drawable/filled_flag"
+            android:title="Flagged Judgments" />
+
+        <item
+            android:id="@+id/nav_membership_packages"
+            android:icon="@drawable/ic_card_membership_black_24dp"
+            android:title="Membership Packages" />
+
+        <item
+            android:id="@+id/nav_change_password"
+            android:icon="@drawable/password"
+            android:title="Change Password" />
+
+        <item
+            android:id="@+id/nav_terms_condition"
+            android:icon="@drawable/terms"
+            android:title="Terms &amp; Conditions " />
+
+        <item
+            android:id="@+id/nav_contact_us"
+            android:icon="@drawable/contact_us4"
+            android:title="Contact Us" />
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:title="Logout" />
+    </group>
+
+
+</menu>

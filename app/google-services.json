@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "135435443248",
+    "firebase_url": "https://legal-judgments-5d0a5.firebaseio.com",
+    "project_id": "legal-judgments-5d0a5",
+    "storage_bucket": "legal-judgments-5d0a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135435443248:android:bbac13db03a8bf15",
+        "android_client_info": {
+          "package_name": "com.legaljudgements"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "135435443248-ob5s6rflq2hsqnn0grv6i2a725r87abj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.legaljudgements",
+            "certificate_hash": "f4389a10be7413501a1586f2234ba4b8b4d6c3e2"
+          }
+        },
+        {
+          "client_id": "135435443248-elbkkmp045s7mh079ora0c08sb762asb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgB0sitJeduemWXbzgZ1EaFZl2OCEzAxo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "135435443248-elbkkmp045s7mh079ora0c08sb762asb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    android:paddingRight="20dp">
+
+    <TextView
+        android:id="@+id/heading_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="end"
+        android:paddingBottom="15dp"
+        android:visibility="visible"
+        android:paddingLeft="20sp"
+        android:paddingTop="15dp"
+        android:singleLine="true"
+        android:text=""
+
+        android:textColor="@color/colorGrey15" />
+
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/heading_price"
+        android:paddingBottom="15dp"
+        android:paddingLeft="35sp"
+        android:paddingTop="15dp"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="@color/colorGrey20"
+        android:textStyle="bold" />
+
+</RelativeLayout>

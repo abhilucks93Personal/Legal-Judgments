@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/child_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="45sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="35sp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/child_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Validity : " />
+
+        <TextView
+            android:id="@+id/child_tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
+            android:text="Rs. 299"
+            android:textColor="@color/colorAccent"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/child_row_tv_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/layout_bg"
+        android:gravity="center"
+        android:paddingBottom="7dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:paddingTop="7dp"
+        android:text="Select"
+        android:textColor="@color/colorWhite"
+        android:visibility="gone" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/colorBlack25" />
+
+</LinearLayout>

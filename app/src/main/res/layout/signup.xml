@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundGrey"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:id="@+id/signup_ll_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorWhite">
+
+        <TextView
+            android:id="@+id/signup_tv_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="@dimen/activity_margin_textview_button"
+            android:layout_marginRight="@dimen/activity_margin_textview_button"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/layout_bg"
+            android:gravity="center"
+            android:padding="@dimen/activity_padding_textview_button"
+            android:text="Submit"
+            android:textColor="@color/colorWhite" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       android:layout_above="@+id/signup_ll_submit">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.legaljudgements.Utils.CustomTextInputLayout
+                style="@style/TextLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/gap_margin_x4"
+                android:background="@drawable/layout_bg6"
+                android:elevation="3dp"
+                android:gravity="center_vertical"
+                android:padding="3dp">
+
+                <EditText
+                    android:id="@+id/signup_et_user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="Username"
+                    android:padding="4dp"
+                    android:paddingLeft="@dimen/edittext_padding"
+                    android:paddingRight="@dimen/edittext_padding"
+                    android:singleLine="true"
+                    android:textColor="#111111"
+                    android:textSize="13sp" />
+
+            </com.legaljudgements.Utils.CustomTextInputLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/gap_margin_x4"
+
+                android:background="@drawable/layout_bg6"
+                android:elevation="3dp"
+                android:gravity="center_vertical"
+                android:padding="3dp">
+
+                <ImageView
+                    android:id="@+id/psswrd_eye"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="8dp"
+                    android:src="@drawable/eye" />
+
+                <com.legaljudgements.Utils.CustomTextInputLayout
+                    style="@style/TextLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/psswrd_eye">
+
+                    <EditText
+                        android:id="@+id/signup_et_psswrd"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@null"
+                        android:digits="abcdefghijklmnopqrstuvwxyz1234567890#@"
+                        android:gravity="center_vertical"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:padding="4dp"
+                        android:paddingLeft="@dimen/edittext_padding"
+                        android:paddingRight="@dimen/edittext_padding"
+                        android:singleLine="true"
+                        android:textColor="#111111"
+                        android:textSize="13sp" />
+
+                </com.legaljudgements.Utils.CustomTextInputLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/gap_margin_x4"
+                android:background="@drawable/layout_bg6"
+                android:elevation="3dp"
+                android:gravity="center_vertical"
+                android:padding="3dp">
+
+                <ImageView
+                    android:id="@+id/psswrd_eye2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:padding="8dp"
+                    android:src="@drawable/eye" />
+
+                <com.legaljudgements.Utils.CustomTextInputLayout
+                    style="@style/TextLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/psswrd_eye2">
+
+                    <EditText
+                        android:id="@+id/signup_et_confirm_psswrd"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@null"
+                        android:digits="abcdefghijklmnopqrstuvwxyz1234567890#@"
+                        android:gravity="center_vertical"
+                        android:hint="Confirm Password"
+                        android:inputType="textPassword"
+                        android:padding="4dp"
+                        android:paddingLeft="@dimen/edittext_padding"
+                        android:paddingRight="@dimen/edittext_padding"
+                        android:singleLine="true"
+                        android:textColor="#111111"
+                        android:textSize="13sp" />
+
+                </com.legaljudgements.Utils.CustomTextInputLayout>
+            </RelativeLayout>
+
+         <!--   <com.legaljudgements.Utils.CustomTextInputLayout
+
+                style="@style/TextLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/gap_margin_x4"
+                android:background="@drawable/layout_bg6"
+                android:elevation="3dp"
+                android:gravity="center_vertical"
+                android:padding="3dp">
+
+                <EditText
+                    android:id="@+id/signup_et_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="Full Name"
+                    android:inputType="textPersonName"
+                    android:padding="4dp"
+                    android:paddingLeft="@dimen/edittext_padding"
+                    android:paddingRight="@dimen/edittext_padding"
+                    android:singleLine="true"
+                    android:textColor="#111111"
+                    android:textSize="13sp" />
+
+            </com.legaljudgements.Utils.CustomTextInputLayout>-->
+
+            <com.legaljudgements.Utils.CustomTextInputLayout
+
+                style="@style/TextLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/gap_margin_x4"
+                android:background="@drawable/layout_bg6"
+                android:elevation="3dp"
+                android:gravity="center_vertical"
+                android:padding="3dp">
+
+                <EditText
+                    android:id="@+id/signup_et_num"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="Phone Number"
+                    android:inputType="number"
+                    android:padding="4dp"
+                    android:paddingLeft="@dimen/edittext_padding"
+                    android:paddingRight="@dimen/edittext_padding"
+                    android:singleLine="true"
+                    android:textColor="#111111"
+                    android:textSize="13sp" />
+
+            </com.legaljudgements.Utils.CustomTextInputLayout>
+
+            <!--<com.legaljudgements.Utils.CustomTextInputLayout
+
+                style="@style/TextLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/gap_margin_x4"
+                android:background="@drawable/layout_bg6"
+                android:elevation="3dp"
+                android:gravity="center_vertical"
+                android:padding="3dp">
+
+                <EditText
+                    android:id="@+id/signup_et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:padding="4dp"
+                    android:paddingLeft="@dimen/edittext_padding"
+                    android:paddingRight="@dimen/edittext_padding"
+                    android:singleLine="true"
+                    android:textColor="#111111"
+                    android:textSize="13sp" />
+
+            </com.legaljudgements.Utils.CustomTextInputLayout>-->
+
+            <com.legaljudgements.Utils.CustomTextInputLayout
+                style="@style/TextLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="@dimen/gap_margin_x4"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/gap_margin_x4"
+                android:background="@drawable/layout_bg6"
+                android:elevation="3dp"
+                android:gravity="center_vertical"
+                android:padding="3dp">
+
+                <EditText
+                    android:id="@+id/signup_et_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="Chamber No."
+                    android:inputType="textEmailAddress"
+                    android:padding="4dp"
+                    android:paddingLeft="@dimen/edittext_padding"
+                    android:paddingRight="@dimen/edittext_padding"
+                    android:singleLine="true"
+                    android:textColor="#111111"
+                    android:textSize="13sp" />
+
+            </com.legaljudgements.Utils.CustomTextInputLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

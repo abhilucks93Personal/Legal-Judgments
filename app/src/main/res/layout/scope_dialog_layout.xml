@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingBottom="20dp">
+
+    <TextView
+        android:id="@+id/scope_dialog_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text="Full Access"
+        android:textColor="@color/colorGrey25"
+        android:textSize="20sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorGrey10" />
+
+    <RadioGroup
+        android:id="@+id/scope_rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <RadioButton
+            android:id="@+id/rb_public"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:padding="12dp"
+            android:text="Yes"
+            app:buttonTint="@color/colorRed"
+            android:textColor="@color/colorGrey20"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/rb_private"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="No"
+            app:buttonTint="@color/colorRed"
+            android:textColor="@color/colorGrey20"
+            android:textSize="16sp" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/scope_tv_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/layout_bg"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Submit"
+        android:textColor="#dedede" />
+
+</LinearLayout>

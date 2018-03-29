@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundGrey"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/create_membership_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorWhite">
+
+        <TextView
+            android:id="@+id/create_membership_tv_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_margin_textview_button"
+            android:background="@drawable/layout_bg"
+            android:gravity="center"
+            android:padding="@dimen/activity_padding_textview_button"
+            android:text="Submit"
+            android:textColor="@color/colorWhite" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/create_membership_footer"
+        android:padding="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="5dp"
+                android:text="Title" />
+
+            <EditText
+                android:id="@+id/create_membership_et_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/layout_bg4"
+                android:padding="@dimen/activity_padding_edittext"
+                android:singleLine="true"
+                android:textColor="@color/colorBlack"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="5dp"
+                android:text="Description" />
+
+            <EditText
+                android:id="@+id/create_membership_et_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/layout_bg4"
+                android:gravity="top"
+                android:lines="4"
+                android:padding="@dimen/activity_padding_edittext"
+                android:textColor="@color/colorBlack"
+                android:textSize="13sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="5dp"
+                    android:text="Price (Rs.)" />
+
+                <EditText
+                    android:id="@+id/create_membership_et_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/layout_bg4"
+                    android:inputType="number"
+                    android:padding="@dimen/activity_padding_edittext"
+                    android:singleLine="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="5dp"
+                    android:text="Duration" />
+
+                <EditText
+                    android:id="@+id/create_membership_et_duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/layout_bg4"
+                    android:inputType="number"
+                    android:padding="@dimen/activity_padding_edittext"
+                    android:singleLine="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:text="Day(s)"
+                    app:buttonTint="@color/colorRed" />
+
+                <RadioButton
+                    android:id="@+id/rb_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Month(s)"
+                    app:buttonTint="@color/colorRed" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>
