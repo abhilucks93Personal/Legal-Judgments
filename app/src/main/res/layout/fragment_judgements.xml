@@ -36,7 +36,7 @@
                 android:textColor="@color/colorGrey25"
                 android:textSize="14sp" />
 
-            <ImageView
+            <TextView
                 android:id="@+id/iv_tick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,8 +48,8 @@
                 android:paddingRight="20dp"
                 android:paddingStart="20dp"
                 android:paddingTop="11dp"
-                android:src="@drawable/tick"
-                android:tint="@color/colorWhite" />
+                android:text="Search"
+                android:textColor="@color/colorWhite" />
 
         </LinearLayout>
 
@@ -121,7 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textColor="#BFc1c1c1"
+            android:textColor="#0D000000"
             android:textSize="44sp" />
 
         <android.support.v4.widget.SwipeRefreshLayout

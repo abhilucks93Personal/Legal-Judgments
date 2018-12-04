@@ -5,14 +5,6 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite">
 
-
-    <!--<ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:scrollbars="none">-->
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,20 +19,19 @@
         <jp.wasabeef.richeditor.RichEditor
             android:id="@+id/view_judgement_tv_desc"
             android:layout_width="match_parent"
+            android:longClickable="false"
             android:layout_height="match_parent"
             android:background="@null" />
 
 
     </LinearLayout>
-    <!-- </ScrollView>-->
 
     <TextView
         android:id="@+id/num_water_mark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="9599722268"
-        android:textColor="#BFdedede"
+        android:textColor="#0D000000"
         android:textSize="44sp" />
 
 </RelativeLayout>

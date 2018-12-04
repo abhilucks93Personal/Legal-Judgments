@@ -33,6 +33,7 @@ import static com.legaljudgements.Utils.Constants.ADMIN;
 import static com.legaljudgements.Utils.Constants.DEVICE_CHANGED;
 import static com.legaljudgements.Utils.Constants.LAWYER;
 import static com.legaljudgements.Utils.Constants.address;
+import static com.legaljudgements.Utils.Constants.chamber;
 import static com.legaljudgements.Utils.Constants.code_200;
 import static com.legaljudgements.Utils.Constants.code_404;
 import static com.legaljudgements.Utils.Constants.code_502;

@@ -37,6 +37,7 @@ public class Constants {
     public static String userTypeUser = "USER";
     public static String userTypeAdmin = "ADMIN";
     public static String membershipValidity = "membershipValidity";
+    public static String chamber = "chamber";
 
     public static String judgementId = "judgementId";
     public static String title = "title";
@@ -79,4 +80,5 @@ public class Constants {
     public static JudgementModel tempJudgmentModel = null;
 
     public static String tempDetailedDescription = "";
+
 }

@@ -166,10 +166,11 @@ public class UserDetails extends AppCompatActivity implements DatePickerDialog.O
         tv_phone.setText(data.getPhone());
         tv_address.setText(data.getAddress());
         tv_access.setText(parseAccess(data.getScope()));
-        tv_startDate.setText(Utility.formatDateForDisplay(getValue(data.getMembershipStartDate())));
-        tv_endDate.setText(Utility.formatDateForDisplay(getValue(data.getMembershipEndDate())));
-        tv_status.setText(getValue(data.getIsActive()));
+        tv_startDate.setText(Utility.formatDateForDisplay(Utility.convertedDate(data.getMembershipStartDate())));
+        tv_endDate.setText(Utility.formatDateForDisplay(Utility.convertedDate(data.getMembershipEndDate())));
+        tv_status.setText(getStatus(data));
         tv_activate.setText(getClickText(data.getIsActive()));
+
     }
 
     private String parseAccess(String scope) {
@@ -179,24 +180,16 @@ public class UserDetails extends AppCompatActivity implements DatePickerDialog.O
             return "No";
     }
 
-    private String getValue(String str) {
 
-        switch (str) {
-            case "true":
-                return "Active";
+    private String getStatus(UserDetailsModel userDetailsModel) {
 
-            case "false":
-                return "DeActive";
 
-            case "null":
-                return "N/A";
-
-            default:
-                if (data.getIsActive().equalsIgnoreCase("true"))
-                    return Utility.convertedDate(str);
-                else
-                    return "N/A";
-
+        if (Utility.checkExpiry(Utility.convertedDate(userDetailsModel.getMembershipEndDate()))) {
+            return "Term Expiry";
+        } else if (Boolean.parseBoolean(userDetailsModel.getIsActive())) {
+            return "Active";
+        } else {
+            return "DeActive";
         }
     }
 
@@ -208,7 +201,6 @@ public class UserDetails extends AppCompatActivity implements DatePickerDialog.O
 
             case "false":
                 return "Activate";
-
 
         }
         return null;
@@ -236,6 +228,7 @@ public class UserDetails extends AppCompatActivity implements DatePickerDialog.O
                 Intent intent = new Intent();
                 intent.putExtra("data", data);
                 intent.putExtra("pos", pos);
+                intent.putExtra("tag", "other");
                 setResult(RESULT_OK, intent);
                 finish();
                 return true;
@@ -303,6 +296,7 @@ public class UserDetails extends AppCompatActivity implements DatePickerDialog.O
                 Intent intent = new Intent();
                 intent.putExtra("data", data);
                 intent.putExtra("pos", pos);
+                intent.putExtra("tag", "delete");
                 setResult(RESULT_OK, intent);
                 finish();
 
@@ -317,6 +311,7 @@ public class UserDetails extends AppCompatActivity implements DatePickerDialog.O
         Intent intent = new Intent();
         intent.putExtra("data", data);
         intent.putExtra("pos", pos);
+        intent.putExtra("tag", "other");
         setResult(RESULT_OK, intent);
         finish();
     }

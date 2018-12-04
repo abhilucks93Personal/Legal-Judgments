@@ -11,7 +11,7 @@ public class UserDetailsModel implements Serializable {
     private String userId = "";
     private String deviceId = "";
     private String userName = "";
-    private String password="";
+    private String password = "";
     private String name = "";
     private String email = "";
     private String phone = "";
@@ -87,6 +87,8 @@ public class UserDetailsModel implements Serializable {
     }
 
     public String getName() {
+        if (name == null)
+            name = "";
         return name;
     }
 

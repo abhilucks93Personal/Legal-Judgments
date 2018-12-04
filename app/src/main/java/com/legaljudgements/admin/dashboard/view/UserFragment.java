@@ -271,13 +271,20 @@ public class UserFragment extends Fragment implements View.OnClickListener, Adap
             if (data != null) {
                 UserDetailsModel userDetailsModel = (UserDetailsModel) data.getSerializableExtra("data");
                 int pos = data.getIntExtra("pos", -1);
-                if (pos != -1) {
+                if (pos >= 0) {
                     if (userDetailsModel != null) {
-                        allUsers.set(pos, userDetailsModel);
+                        String tag = data.getStringExtra("tag");
+                        if (tag.equals("delete")) {
+                            allUsers.remove(pos);
+                            adapter.notifyDataSetChanged();
+                        } else {
+                            allUsers.set(pos, userDetailsModel);
+                            adapter.notifyDataSetChanged();
+                        }
                     } else {
-                        allUsers.remove(pos);
+                        onRefresh();
                     }
-                    adapter.notifyDataSetChanged();
+
                 }
             }
         }
@@ -304,6 +311,7 @@ public class UserFragment extends Fragment implements View.OnClickListener, Adap
     public void onRefresh() {
         swipeView.setRefreshing(false);
         swipeView.isNestedScrollingEnabled();
+        setSearchView();
         pagNum = 1;
         getUsers();
     }

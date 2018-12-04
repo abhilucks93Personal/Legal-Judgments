@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.legaljudgements.R;
+import com.legaljudgements.Utils.Utility;
 import com.legaljudgements.admin.dashboard.model.UserDetailsModel;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class UserDetailsAdapter extends ArrayAdapter<UserDetailsModel> {
     private static class ViewHolder {
         TextView txtUserName;
         TextView txtStatus;
-        TextView txtPhoneNumber, txtDistrict;
+        TextView txtPhoneNumber, txtDistrict, tvChamber, tvFullAccess, tvMembership;
     }
 
     public UserDetailsAdapter(Context context, ArrayList<UserDetailsModel> data) {
@@ -30,7 +31,6 @@ public class UserDetailsAdapter extends ArrayAdapter<UserDetailsModel> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-
         ViewHolder viewHolder;
 
         viewHolder = new ViewHolder();
@@ -38,15 +38,16 @@ public class UserDetailsAdapter extends ArrayAdapter<UserDetailsModel> {
 
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.user_details_row_item, parent, false);
-            viewHolder.txtUserName = (TextView) convertView.findViewById(R.id.users_list_item_tv_userName);
+            viewHolder.txtUserName = convertView.findViewById(R.id.users_list_item_tv_userName);
             viewHolder.txtPhoneNumber = (TextView) convertView.findViewById(R.id.users_list_item_tv_phoneNumber);
             viewHolder.txtDistrict = (TextView) convertView.findViewById(R.id.users_list_item_tv_district);
             viewHolder.txtStatus = (TextView) convertView.findViewById(R.id.users_list_item_tv_status);
+            viewHolder.tvChamber = (TextView) convertView.findViewById(R.id.user_detail_tv_chamber);
+            viewHolder.tvFullAccess = (TextView) convertView.findViewById(R.id.user_detail_tv_full_access);
+            viewHolder.tvMembership = (TextView) convertView.findViewById(R.id.user_detail_tv_membership);
 
             convertView.setTag(viewHolder);
 
-           /* Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.up_from_bottom);
-            convertView.startAnimation(animation);*/
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
@@ -56,9 +57,19 @@ public class UserDetailsAdapter extends ArrayAdapter<UserDetailsModel> {
             viewHolder.txtUserName.setText(userDetailsModel.getUserName());
             viewHolder.txtPhoneNumber.setText(userDetailsModel.getPhone());
             viewHolder.txtDistrict.setText(userDetailsModel.getAddress());
+            viewHolder.tvFullAccess.setText(parseAccess(userDetailsModel.getScope()));
+            viewHolder.tvChamber.setText(userDetailsModel.getName());
+
+            String strStartDate = Utility.formatDateForDisplay(Utility.convertedDate(userDetailsModel.getMembershipStartDate()));
+            String strEndDate = Utility.formatDateForDisplay(Utility.convertedDate(userDetailsModel.getMembershipEndDate()));
+
+            viewHolder.tvMembership.setText(strStartDate + " - " + strEndDate);
 
             String strStatus;
-            if (Boolean.parseBoolean(userDetailsModel.getIsActive())) {
+            if (Utility.checkExpiry(Utility.convertedDate(userDetailsModel.getMembershipEndDate()))) {
+                strStatus = "Term Expiry";
+                viewHolder.txtStatus.setTextColor(getContext().getResources().getColor(R.color.colorRed));
+            } else if (Boolean.parseBoolean(userDetailsModel.getIsActive())) {
                 strStatus = "Active";
                 viewHolder.txtStatus.setTextColor(getContext().getResources().getColor(R.color.colorGreen));
             } else {
@@ -70,5 +81,13 @@ public class UserDetailsAdapter extends ArrayAdapter<UserDetailsModel> {
             Log.e("", "");
         }
         return convertView;
+    }
+
+
+    private String parseAccess(String scope) {
+        if (scope.equals("true"))
+            return "Yes";
+        else
+            return "No";
     }
 }

@@ -49,7 +49,7 @@ import static com.legaljudgements.Utils.Constants.userType;
  * Created by ng on 2/15/2017.
  */
 
-public class JudgementFragment extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener, AbsListView.OnScrollListener, SwipeRefreshLayout.OnRefreshListener {
+public class JudgementFragment extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener, AbsListView.OnScrollListener, SwipeRefreshLayout.OnRefreshListener, RadioGroup.OnCheckedChangeListener {
 
     private ListView lv_users;
     private View view;
@@ -63,7 +63,7 @@ public class JudgementFragment extends Fragment implements AdapterView.OnItemCli
     String strUserType;
     private boolean flagged;
     private LinearLayout rl_search;
-    ImageView iv_tick;
+    TextView iv_tick;
     EditText et_search;
     private int pagNum = 1;
     boolean loading = true;
@@ -75,6 +75,7 @@ public class JudgementFragment extends Fragment implements AdapterView.OnItemCli
     private RadioGroup radioGroup;
     RadioButton rbAll;
     private TextView numWaterMark;
+    private boolean isLoading;
 
 
     @Nullable
@@ -83,13 +84,14 @@ public class JudgementFragment extends Fragment implements AdapterView.OnItemCli
         view = inflater.inflate(R.layout.fragment_judgements, container, false);
         findViewById();
         initData();
+        adapter.setSearchText("");
         getJudgements();
         return view;
 
     }
 
     private void initData() {
-        Utility.setWaterMark(getActivity(),numWaterMark);
+        Utility.setWaterMark(getActivity(), numWaterMark);
         deviceId = Utility.getPreferences(getContext(), Constants.DEVICE_ID);
         strUserId = Utility.getPreferences(getContext(), Constants.userId);
         strUserType = Utility.getPreferences(getContext(), userType);
@@ -108,52 +110,60 @@ public class JudgementFragment extends Fragment implements AdapterView.OnItemCli
     }
 
     public void getJudgements() {
-        if (pagNum == 1) {
-            progressDialog = new ProgressDialog(getActivity());
-            progressDialog.setMessage("Please wait...");
-            progressDialog.setCancelable(false);
-            progressDialog.show();
-        } else {
-            loader.setVisibility(View.VISIBLE);
-        }
-        WebServices.getJudgements(Utility.getPreferences(getContext(), Constants.UniqueDeviceId),
-                flagged, deviceId, "" + pagNum, "" + size, strKeyword,
-                strUserId, strKeywordCategory, new JsonHttpResponseHandler() {
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                        super.onSuccess(statusCode, headers, response);
-                        if (isAdded())
+        if (!isLoading) {
+            Utility.hideKeyboard(getActivity());
+            if (pagNum == 1) {
+                isLoading = true;
+                progressDialog = new ProgressDialog(getActivity());
+                progressDialog.setMessage("Please wait...");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
+            } else {
+                isLoading = true;
+                loader.setVisibility(View.VISIBLE);
+            }
+            WebServices.getJudgements(Utility.getPreferences(getContext(), Constants.UniqueDeviceId),
+                    flagged, deviceId, "" + pagNum, "" + size, strKeyword,
+                    strUserId, strKeywordCategory, new JsonHttpResponseHandler() {
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                            super.onSuccess(statusCode, headers, response);
+                            if (isAdded())
+                                progressDialog.dismiss();
+                            isLoading = false;
+                            loader.setVisibility(View.GONE);
+                            parseJudgementResponse(response);
+                        }
+
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                            Utility.showToast(getContext(), Constants.error_message_api_failed);
+                            super.onFailure(statusCode, headers, responseString, throwable);
+                            Toast.makeText(getContext(), Constants.error_message_api_failed, Toast.LENGTH_SHORT).show();
+                            loader.setVisibility(View.GONE);
                             progressDialog.dismiss();
-                        loader.setVisibility(View.GONE);
-                        // Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
-                        parseJudgementResponse(response);
-                    }
+                            isLoading = false;
+                        }
 
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                        Utility.showToast(getContext(), Constants.error_message_api_failed);
-                        super.onFailure(statusCode, headers, responseString, throwable);
-                        Toast.makeText(getContext(), "Something went wrong! Please try after sometime", Toast.LENGTH_SHORT).show();
-                        loader.setVisibility(View.GONE);
-                        progressDialog.dismiss();
-                    }
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                            super.onFailure(statusCode, headers, throwable, errorResponse);
+                            Utility.showToast(getContext(), Constants.error_message_api_failed);
+                            progressDialog.dismiss();
+                            isLoading = false;
+                            loader.setVisibility(View.GONE);
+                        }
 
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                        super.onFailure(statusCode, headers, throwable, errorResponse);
-                        Utility.showToast(getContext(), Constants.error_message_api_failed);
-                        progressDialog.dismiss();
-                        loader.setVisibility(View.GONE);
-                    }
-
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-                        super.onFailure(statusCode, headers, throwable, errorResponse);
-                        Utility.showToast(getContext(), Constants.error_message_api_failed);
-                        progressDialog.dismiss();
-                        loader.setVisibility(View.GONE);
-                    }
-                });
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+                            super.onFailure(statusCode, headers, throwable, errorResponse);
+                            Utility.showToast(getContext(), Constants.error_message_api_failed);
+                            progressDialog.dismiss();
+                            isLoading = false;
+                            loader.setVisibility(View.GONE);
+                        }
+                    });
+        }
     }
 
     private void parseJudgementResponse(JSONObject response) {
@@ -189,7 +199,6 @@ public class JudgementFragment extends Fragment implements AdapterView.OnItemCli
                         Boolean isFlagged = mData.getBoolean(Constants.isFlagged);
                         String createdDate = mData.getString(Constants.createdDate);
 
-
                         judgementModel.setJudgementId(judgementId);
                         judgementModel.setTitle(title);
                         judgementModel.setCourt(court);
@@ -206,14 +215,13 @@ public class JudgementFragment extends Fragment implements AdapterView.OnItemCli
                         judgementModel.setFlagged(isFlagged);
                         judgementModel.setCreatedDate(Utility.convertedDate(createdDate));
 
-
                         allJudgements.add(judgementModel);
                     }
-
                 }
 
-
                 adapter.notifyDataSetChanged();
+                if (pagNum == 1)
+                    lv_users.smoothScrollToPosition(0);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -228,9 +236,10 @@ public class JudgementFragment extends Fragment implements AdapterView.OnItemCli
         lv_users = (ListView) view.findViewById(R.id.judgements_lv_users);
         rl_search = (LinearLayout) view.findViewById(R.id.rl_search);
         et_search = (EditText) view.findViewById(R.id.et_search);
-        iv_tick = (ImageView) view.findViewById(R.id.iv_tick);
+        iv_tick = view.findViewById(R.id.iv_tick);
         iv_tick.setOnClickListener(this);
         radioGroup = (RadioGroup) view.findViewById(R.id.rg_search);
+        radioGroup.setOnCheckedChangeListener(this);
         rbAll = (RadioButton) view.findViewById(R.id.rb_all);
         numWaterMark = (TextView) view.findViewById(R.id.num_water_mark);
     }
@@ -251,7 +260,6 @@ public class JudgementFragment extends Fragment implements AdapterView.OnItemCli
         }
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -271,11 +279,13 @@ public class JudgementFragment extends Fragment implements AdapterView.OnItemCli
 
     public void updateItem(int pos, JudgementModel judgementDetail) {
         allJudgements.set(pos, judgementDetail);
+
         adapter.notifyDataSetChanged();
     }
 
     public void deleteItem(int pos) {
         allJudgements.remove(pos);
+
         adapter.notifyDataSetChanged();
     }
 
@@ -290,32 +300,38 @@ public class JudgementFragment extends Fragment implements AdapterView.OnItemCli
                 if (requestCode == 200) {
                     if (tag.equals("add")) {
                         pagNum = 1;
+                        adapter.setSearchText("");
                         getJudgements();
                     } else if (tag.equals("edit")) {
-                      /*  int pos = data.getIntExtra("pos", -1);
-                        if (pos >= 0) {
-                            JudgementModel judgementDetail = (JudgementModel) data.getSerializableExtra("data");
-                            updateItem(pos, judgementDetail);
-                        }*/
+
                         if (Utility.getPreferences(getActivity(), isAdmin, false)) {
+
                             pagNum = 1;
+                            adapter.setSearchText("");
                             getJudgements();
                         }
                     } else if (tag.equals("delete")) {
-                       /* int pos = data.getIntExtra("pos", -1);
-                        if (pos >= 0) {
-                            deleteItem(pos);
-                        }*/
+
                         if (Utility.getPreferences(getActivity(), isAdmin, false)) {
                             pagNum = 1;
+                            adapter.setSearchText("");
                             getJudgements();
                         }
                     }
                 }
             } else if (Utility.getPreferences(getContext(), Constants.userType).equals(Constants.userTypeUser)) {
                 if (data.getBooleanExtra("flag_changed", false)) {
-                    pagNum = 1;
-                    getJudgements();
+                    JudgementModel model = data.getParcelableExtra("data");
+                    int pos = data.getIntExtra("pos", -1);
+                    if (model != null && pos >= 0) {
+                        allJudgements.set(pos, model);
+                        adapter.notifyDataSetChanged();
+
+                    } else {
+                        pagNum = 1;
+                        adapter.setSearchText("");
+                        getJudgements();
+                    }
                 }
             }
     }
@@ -324,12 +340,7 @@ public class JudgementFragment extends Fragment implements AdapterView.OnItemCli
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_tick:
-                strKeyword = et_search.getText().toString().trim();
-                strKeywordCategory = getKeywordCategory();
-                if (strKeyword.length() > 0) {
-                    pagNum = 1;
-                    getJudgements();
-                }
+                searchJudgment(false);
                 break;
         }
     }
@@ -340,19 +351,24 @@ public class JudgementFragment extends Fragment implements AdapterView.OnItemCli
 
         if (selectedRadioButtonID != -1) {
 
-            RadioButton selectedRadioButton = (RadioButton) view.findViewById(selectedRadioButtonID);
+            RadioButton selectedRadioButton = view.findViewById(selectedRadioButtonID);
+            String strCategory = selectedRadioButton.getText().toString();
 
-            return selectedRadioButton.getText().toString();
+            if (strCategory.equalsIgnoreCase("all"))
+                strCategory = "";
+
+            return strCategory;
         }
-        return "ALL";
+        return "";
     }
 
     public void setSearchView() {
         if (rl_search.getVisibility() == View.VISIBLE) {
             rl_search.setVisibility(View.GONE);
             strKeyword = "";
-            rbAll.setChecked(true);
+            strKeywordCategory = "";
             pagNum = 1;
+            adapter.setSearchText("");
             getJudgements();
         } else {
             rl_search.setVisibility(View.VISIBLE);
@@ -373,6 +389,7 @@ public class JudgementFragment extends Fragment implements AdapterView.OnItemCli
             if (lastInScreen >= totalItemCount && (pagNum * size < totalsize)) {
                 pagNum = pagNum + 1;
                 loading = false;
+
                 getJudgements();
             }
         }
@@ -383,6 +400,24 @@ public class JudgementFragment extends Fragment implements AdapterView.OnItemCli
         swipeView.setRefreshing(false);
         swipeView.isNestedScrollingEnabled();
         pagNum = 1;
+        adapter.setSearchText("");
         getJudgements();
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+        searchJudgment(true);
+    }
+
+    private void searchJudgment(boolean isSearchTips) {
+        strKeyword = et_search.getText().toString().trim();
+        strKeywordCategory = getKeywordCategory();
+        if (strKeyword.length() > 0 || isSearchTips) {
+            pagNum = 1;
+            adapter.setSearchText(strKeyword);
+            getJudgements();
+        } else {
+            Utility.showToast(getActivity(), "Please enter search text!");
+        }
     }
 }

@@ -14,7 +14,7 @@ import java.net.URLEncoder;
  */
 public class WebServices {
 
-    private static final String BASE_URL = "http://api.legaljudgments.co.in/LJWS/";
+    private static final String BASE_URL = "http://api.legaljudgments.in/LJWS/";
 
     private static String LOGIN = "UserLogin";
 
@@ -49,13 +49,7 @@ public class WebServices {
     private static String userTypeUser = "USER";
     private static String userTypeAdmin = "ADMIN";
 
-    /* public static void userLogin(String UniqueDeviceId, String deviceId, String userName, String Password, JsonHttpResponseHandler jsonHttpResponseHandler) {
 
-         String apiUrl = getApiUrl(UniqueDeviceId, deviceId, userName, Password);
-
-         WebServices.post(LOGIN, apiUrl, jsonHttpResponseHandler);
-     }
- */
     public static void userLogin(String UniqueDeviceId, String deviceId, String userName, String Password, JsonHttpResponseHandler jsonHttpResponseHandler) {
 
      /*  String apiUrl = getApiUrl(UniqueDeviceId, deviceId, userName, Password);*/
@@ -68,19 +62,14 @@ public class WebServices {
     }
 
 
-    /* public static void userSignUp(String UniqueDeviceId, String deviceId, String strUserName, String strpassword, String strName, String strEmail, String strNum, String strAddress, String strMembershipId, JsonHttpResponseHandler jsonHttpResponseHandler) {
-         String apiUrl = getApiUrl(UniqueDeviceId, deviceId, strUserName, strpassword, strName, strEmail, strNum, strAddress, strMembershipId, userTypeUser);
-         WebServices.post(SIGN_UP, apiUrl, jsonHttpResponseHandler);
-     }
- */
-    public static void userSignUp(String UniqueDeviceId, String deviceId, String strUserName, String strpassword, String strName, String strEmail, String strNum, String strAddress, String strMembershipId, JsonHttpResponseHandler jsonHttpResponseHandler) {
+    public static void userSignUp(String UniqueDeviceId, String deviceId, String strUserName, String strpassword, String strName, String strEmail, String strNum, String strAddress, String strChamber, String strMembershipId, JsonHttpResponseHandler jsonHttpResponseHandler) {
      /*  String apiUrl = getApiUrl(UniqueDeviceId, deviceId, strUserName, strpassword, strName, strEmail, strNum, strAddress, strMembershipId, userTypeUser);*/
         RequestParams params = new RequestParams();
         params.put("UniqueDeviceId", UniqueDeviceId);
         params.put("DeviceId", deviceId);
         params.put("UserName", strUserName);
         params.put("Password", strpassword);
-        params.put("Name", strName);
+        params.put("Name", strChamber);
         params.put("Email", strEmail);
         params.put("Phone", strNum);
         params.put("Address", strAddress);
@@ -94,29 +83,9 @@ public class WebServices {
         WebServices.post(UPDATE_PROFILE, apiUrl, jsonHttpResponseHandler);
     }
 
-    /*public static void addUpdateMembership(String UniqueDeviceId, Boolean edit, String deviceId, String title, String description, String validity, String price, String image, String membershipId, String createdBy, String scope, JsonHttpResponseHandler jsonHttpResponseHandler) {
-        String apiUrl;
-        String methodName;
-        if (!edit) {
-            methodName = ADD_MEMBERSHIP;
-            apiUrl = getApiUrl(UniqueDeviceId, deviceId, title, description, validity, price, image, createdBy);
-        } else {
-            methodName = UPDATE_MEMBERSHIP;
-            apiUrl = getApiUrl(UniqueDeviceId, deviceId, title, description, validity, price, image, membershipId, createdBy);
-        }
-        WebServices.post(methodName, apiUrl, jsonHttpResponseHandler);
-    }*/
 
     public static void addUpdateMembership(String UniqueDeviceId, Boolean edit, String deviceId, String title, String description, String validity, String price, String image, String membershipId, String createdBy, String scope, String validityUnit, JsonHttpResponseHandler jsonHttpResponseHandler) {
-      /*  String apiUrl;
-        String methodName;
-        if (!edit) {
-            methodName = ADD_MEMBERSHIP;
-            apiUrl = getApiUrl(UniqueDeviceId, deviceId, title, description, validity, price, image, createdBy);
-        } else {
-            methodName = UPDATE_MEMBERSHIP;
-            apiUrl = getApiUrl(UniqueDeviceId, deviceId, title, description, validity, price, image, membershipId, createdBy);
-        }*/
+
         RequestParams params = new RequestParams();
         params.put("UniqueDeviceId", UniqueDeviceId);
         params.put("DeviceId", deviceId);
@@ -139,18 +108,6 @@ public class WebServices {
         }
     }
 
-/*    public static void addUpdateJudgement(String UniqueDeviceId, boolean editMode, String deviceId, String str_title, String str_court, String str_judgement_type, String str_date, String str_case_title, String str_case_type, String str_short_desc, String str_full_desc, String str_doc, String str_drive_url, String str_scope, String userId, String str_judgement_id, JsonHttpResponseHandler jsonHttpResponseHandler) {
-        String apiUrl;
-        String methodName;
-        if (!editMode) {
-            methodName = ADD_JUDGEMENT;
-            apiUrl = getApiUrl(UniqueDeviceId, deviceId, str_title, str_court, str_judgement_type, str_date, str_case_title, str_case_type, str_short_desc, str_full_desc, str_doc, str_drive_url, str_scope, userId);
-        } else {
-            methodName = UPDATE_JUDGEMENT;
-            apiUrl = getApiUrl(UniqueDeviceId, deviceId, str_title, str_court, str_judgement_type, str_date, str_case_title, str_case_type, str_short_desc, str_full_desc, str_doc, str_drive_url, str_scope, userId, str_judgement_id);
-        }
-        WebServices.post(methodName, apiUrl, jsonHttpResponseHandler);
-    }*/
 
     public static void addUpdateJudgement(String UniqueDeviceId, boolean editMode, String deviceId, String str_title, String str_court, String str_judgement_type, String str_date, String str_case_title, String str_case_type, String str_short_desc, String str_full_desc, String str_doc, String str_drive_url, String str_scope, String userId, String str_judgement_id, JsonHttpResponseHandler jsonHttpResponseHandler) {
 
@@ -191,7 +148,7 @@ public class WebServices {
     }
 
     public static void forgotPassword(String UniqueDeviceId, String deviceId, JsonHttpResponseHandler jsonHttpResponseHandler) {
-        String apiUrl = getApiUrl(UniqueDeviceId, deviceId);
+        String apiUrl = getApiUrl(UniqueDeviceId, deviceId, "ANDROID");
         WebServices.post(FORGOT_PASSWORD, apiUrl, jsonHttpResponseHandler);
     }
 
@@ -282,7 +239,9 @@ public class WebServices {
         return apiUrl;
     }
 
+
     private static void post(String methodName, String apiNameUrl, JsonHttpResponseHandler jsonHttpResponseHandler) {
+        client.setTimeout(60000);
         RequestParams params = new RequestParams();
         String finalUrl = BASE_URL + methodName + apiNameUrl;
         Log.e("Post url...", "" + finalUrl);
@@ -290,12 +249,14 @@ public class WebServices {
     }
 
     public static void get(String apiNameUrl, RequestParams params, JsonHttpResponseHandler jsonHttpResponseHandler) {
+        client.setTimeout(60000);
         String finalUrl = BASE_URL + apiNameUrl;
         Log.e("Post url...", "" + finalUrl);
         client.get(finalUrl, params, jsonHttpResponseHandler);
     }
 
     public static void _post(String methodName, RequestParams params, JsonHttpResponseHandler jsonHttpResponseHandler) {
+        client.setTimeout(60000);
         String finalUrl = BASE_URL + methodName;
         Log.v("Post url...", "" + finalUrl);
         Log.v("Post Parameters", "" + params);

@@ -28,7 +28,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.legaljudgements.R;
-import com.legaljudgements.login.SplashActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.text.DateFormat;
@@ -456,6 +455,24 @@ public class Utility {
         return dateInString;
     }
 
+    public static boolean checkExpiry(String endDate) {
+        try {
+
+            SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+            Date strDate = sdf.parse(endDate);
+
+            if (System.currentTimeMillis() > strDate.getTime()) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            Log.e("error", e.getMessage());
+
+        }
+
+        return false;
+    }
+
     public static void alertDialog(Activity activity, String message) {
 
         final Dialog dialog = new Dialog(activity);
@@ -478,12 +495,56 @@ public class Utility {
 
     public static void setWaterMark(Activity context, TextView numWaterMark) {
         if (numWaterMark != null) {
-            if (Utility.getPreferences(context, isLawyer, false)) {
+           /* if (Utility.getPreferences(context, isLawyer, false)) {
                 String number = Utility.getPreferences(context, Constants.phone);
                 numWaterMark.setText(number);
-            }
+            }*/
+
+            String number = Utility.getPreferences(context, Constants.phone);
+            if (number == null || number.equals("null"))
+                number = "";
+            numWaterMark.setText(number);
 
         }
 
     }
 }
+
+
+/*
+
+DONE -------- Page ki background me Legal judgment logo k sath phone number show ho taaki koi snapshot share kre to track ho jaye
+
+
+
+DONE -------- Username ki jagah sirf name likha ho or chamber no. Ka additional column ho . District ki jagah place ho
+
+
+
+DONE -------- Agar user deactivate ho gya to hme uski date show ho ki usne kab se kab tak app subscribe ki thi (ADMIN)
+
+
+
+DONE -------- Teen status ho. Active deactive or term expiry (ADMIN)
+
+
+
+DONE -------- Search box ka design change krna h. Snapshot send kr dunga m jaisa banwana h
+
+
+
+User ki date extend krte h to logout kiye bin nyi date show ho
+
+
+
+DONE -------- Judgments dekhte tym agar koi judgment flag kiya to back aate tym wahi se judgment show ho jahan se flag kiya tha. Ab latest show krta h back jab krte h.
+
+
+
+DONE -------- LJWS/DeleteUser/{UserId}
+
+
+
+DONE -------- LJWS/GetActiveJudgements/{UniqueDeviceId}/{DeviceId}/{PageNumber}/{PageSize}/{Keyword}/{UserId}/{Category?}
+
+*/

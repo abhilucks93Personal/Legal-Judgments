@@ -27,8 +27,6 @@ public class JudgementModel implements Parcelable {
     private Boolean isFlagged;
     private String createdDate;
 
-    public JudgementModel() {
-    }
 
     public JudgementModel(Parcel in) {
         judgementId = in.readString();
@@ -42,6 +40,12 @@ public class JudgementModel implements Parcelable {
         detailedDescription = in.readString();
         judgementDoc = in.readString();
         googleDriveUrl = in.readString();
+        byte tmpIsPublic = in.readByte();
+        isPublic = tmpIsPublic == 0 ? null : tmpIsPublic == 1;
+        byte tmpIsActive = in.readByte();
+        isActive = tmpIsActive == 0 ? null : tmpIsActive == 1;
+        byte tmpIsFlagged = in.readByte();
+        isFlagged = tmpIsFlagged == 0 ? null : tmpIsFlagged == 1;
         createdDate = in.readString();
     }
 
@@ -56,6 +60,10 @@ public class JudgementModel implements Parcelable {
             return new JudgementModel[size];
         }
     };
+
+    public JudgementModel() {
+        
+    }
 
     public String getJudgementId() {
         return judgementId;
@@ -162,7 +170,7 @@ public class JudgementModel implements Parcelable {
     }
 
     public Boolean getFlagged() {
-        if(isFlagged==null)
+        if (isFlagged == null)
             return false;
         return isFlagged;
     }
@@ -179,24 +187,28 @@ public class JudgementModel implements Parcelable {
         this.createdDate = createdDate;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(judgementId);
-        dest.writeString(title);
-        dest.writeString(court);
-        dest.writeString(judgementType);
-        dest.writeString(dateOfJudgement);
-        dest.writeString(caseTitle);
-        dest.writeString(caseType);
-        dest.writeString(shortDescription);
-        dest.writeString(detailedDescription);
-        dest.writeString(judgementDoc);
-        dest.writeString(googleDriveUrl);
-        dest.writeString(createdDate);
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(judgementId);
+        parcel.writeString(title);
+        parcel.writeString(court);
+        parcel.writeString(judgementType);
+        parcel.writeString(dateOfJudgement);
+        parcel.writeString(caseTitle);
+        parcel.writeString(caseType);
+        parcel.writeString(shortDescription);
+        parcel.writeString(detailedDescription);
+        parcel.writeString(judgementDoc);
+        parcel.writeString(googleDriveUrl);
+        parcel.writeByte((byte) (isPublic == null ? 0 : isPublic ? 1 : 2));
+        parcel.writeByte((byte) (isActive == null ? 0 : isActive ? 1 : 2));
+        parcel.writeByte((byte) (isFlagged == null ? 0 : isFlagged ? 1 : 2));
+        parcel.writeString(createdDate);
     }
 }

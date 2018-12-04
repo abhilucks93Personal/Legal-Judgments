@@ -20,18 +20,19 @@ import org.json.JSONObject;
 import me.leolin.shortcutbadger.ShortcutBadger;
 
 /**
- * Created by neha on 28/3/17.
+ * Created by abhi on 28/3/17.
  */
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final String TAG = "MyFirebaseMsgService";
     int badgeCount = 0;
+
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         try {
-            JSONObject mJsonObject= new JSONObject(remoteMessage.getData());
-            JSONObject mNewJsonObject= new JSONObject(mJsonObject.getString("data"));
+            JSONObject mJsonObject = new JSONObject(remoteMessage.getData());
+            JSONObject mNewJsonObject = new JSONObject(mJsonObject.getString("data"));
 
             String message = mNewJsonObject.getString("message");
             String title = mNewJsonObject.getString("contentTitle");
@@ -47,8 +48,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
 
     }
-
-
 
 
     private void sendNotification(String ItemId, String title, String message, String ticker_text) {
@@ -77,11 +76,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         notificationManager.notify(id, noBuilder.build()); //0 = ID of notification*/
 
 
-
-
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        notificationManager.notify(0, notificationBuilder.build());
+        notificationManager.notify((int) System.currentTimeMillis(), notificationBuilder.build());
     }
 }

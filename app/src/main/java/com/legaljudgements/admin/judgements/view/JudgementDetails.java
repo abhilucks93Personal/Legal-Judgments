@@ -62,13 +62,13 @@ public class JudgementDetails extends AppCompatActivity implements View.OnClickL
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         user_type = getIntent().getStringExtra("userType");
 
-        Utility.setWaterMark(JudgementDetails.this,numWaterMark);
+        Utility.setWaterMark(JudgementDetails.this, numWaterMark);
 
         pos = getIntent().getIntExtra("pos", -1);
         deviceId = Utility.getPreferences(this, Constants.DEVICE_ID);
         str_userId = Utility.getPreferences(this, Constants.userId);
 
-        data_judgement = (JudgementModel) getIntent().getParcelableExtra("data");
+        data_judgement = getIntent().getParcelableExtra("data");
 
         if (data_judgement == null)
             data_judgement = Constants.tempJudgmentModel;
@@ -215,7 +215,7 @@ public class JudgementDetails extends AppCompatActivity implements View.OnClickL
         tv_date = (TextView) findViewById(R.id.judgement_detail_tv_date);
         tv_desc = (TextView) findViewById(R.id.judgement_detail_tv_view);
         tv_desc.setOnClickListener(this);
-        numWaterMark= (TextView) findViewById(R.id.num_water_mark);
+        numWaterMark = (TextView) findViewById(R.id.num_water_mark);
 
     }
 
@@ -264,7 +264,8 @@ public class JudgementDetails extends AppCompatActivity implements View.OnClickL
         Intent intent = new Intent();
         intent.putExtra("tag", "edit")
                 .putExtra("pos", pos)
-                .putExtra("flag_changed", flag_changed);
+                .putExtra("flag_changed", flag_changed)
+                .putExtra("data", data_judgement);
         setResult(RESULT_OK, intent);
         finish();
     }

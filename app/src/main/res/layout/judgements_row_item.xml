@@ -13,13 +13,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/judgement_list_item_tv_date"
             android:padding="5dp"
             android:singleLine="true"
-            android:text="title"
+            android:text=""
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/colorGrey20"
             android:textSize="16sp"
-            android:layout_toLeftOf="@+id/judgement_list_item_tv_date"
             android:textStyle="bold" />
 
         <TextView
@@ -30,10 +30,9 @@
             android:layout_alignParentTop="true"
             android:padding="5dp"
             android:text=""
-            android:textSize="11sp"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/colorGrey15"
-             />
+            android:textSize="11sp" />
 
     </RelativeLayout>
 
@@ -43,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/name"
         android:layout_marginLeft="5dp"
-        android:text="type"
-        android:textColor="@color/colorGrey15" />
+        android:text=""
+        android:textColor="@color/colorBlack" />
 
 </LinearLayout>

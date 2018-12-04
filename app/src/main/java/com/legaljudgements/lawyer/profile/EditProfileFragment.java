@@ -32,7 +32,7 @@ import static com.legaljudgements.Utils.Constants.phone;
  */
 public class EditProfileFragment extends Fragment implements View.OnClickListener {
 
-    EditText et_name, et_email, et_phone, et_address;
+    EditText et_name, et_email, et_phone, et_address, et_chamber;
     TextView tv_submit;
     private ProgressDialog progressDialog;
     private String deviceId, strUserName, strpassword, strMembershipId, strUserId;
@@ -59,6 +59,7 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
         et_email.setText(Utility.getPreferences(getContext(), Constants.email));
         et_phone.setText(Utility.getPreferences(getContext(), Constants.phone));
         et_address.setText(Utility.getPreferences(getContext(), Constants.address));
+        et_chamber.setText(Utility.getPreferences(getContext(), Constants.name));
 
     }
 
@@ -67,6 +68,7 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
         et_email = (EditText) view.findViewById(R.id.edit_profile_et_email);
         et_phone = (EditText) view.findViewById(R.id.edit_profile_et_num);
         et_address = (EditText) view.findViewById(R.id.edit_profile_et_address);
+        et_chamber = (EditText) view.findViewById(R.id.edit_profile_et_chamber);
         tv_submit = (TextView) view.findViewById(R.id.edit_profile_tv_submit);
         tv_submit.setOnClickListener(this);
 
@@ -74,9 +76,7 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
 
     private void fetchData() {
 
-        // String strName = et_name.getText().toString().trim();
         String strNum = et_phone.getText().toString().trim();
-        //String strEmail = et_email.getText().toString().trim();
         String strAddress = et_address.getText().toString().trim();
 
 
@@ -98,7 +98,7 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
                 progressDialog.dismiss();
-              //  Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
                 parseUpdateProfileResponse(response);
             }
 
